@@ -3,6 +3,11 @@ name: expose-builder
 description: Wiederholbarer Prozess, der aus dem Material eines Objekt-Ordners ein schlankes Querformat-Verkaufsexposé (A4 quer, HTML → Headless-Chromium → PDF) für Kapitalanleger erzeugt — Marke HK RuhrInvest, EIN PDF pro Wohnung (Gebäude-Seiten shared, Wohnungs-Seiten individuell). Nur Daten + wenige knackige Sätze, keine Kauf-/Marktpreise; Miete + Hausgeld nur auf der Pflicht-Folie „Stammdaten der Wohnung" (Grundbuch, MEA, Abt. II …), damit dasselbe PDF für Käufer UND Bank reicht. Ablauf: Start-Gates (Einheiten, Datenquelle, Marke, Stadt/Stadtteil-Zuschnitt, Titelmotiv-, Haus-Fotos-, Farbabgleich- und Foto-Fragen) → Recherche-Ausarbeitungen (Makro/Mikro) → Block-für-Block-Fragesparring → objekt.json je Objekt → Kontaktbogen-Gate (passt/passt nicht/anders) → Render pro Wohnung über generische Tools → Abnahme-Check. Trigger: "Exposé bauen", "Verkaufsdossier", "Vertriebsexposé", "Objekt-Dossier", "Kapitalanlage-Exposé", "Exposé für <Objekt>", "Verkaufsunterlage erstellen", Marke HK-RuhrInvest / Petrov Wohnen, oder wenn der User einen Objekt-Ordner mit Fotos, Grundrissen, Unterlagen teilt und daraus eine Verkaufs-Präsentation will. NICHT für: Ankaufsprüfung/Due-Diligence (→ unterlagen-check-ankauf), Aufteiler-Analyse/Kalkulation (→ aufteiler), Bank-Finanzierungsanfragen (→ finanzierungsanfrage-generator) oder Einzelfragen zu einem Dokument.
 ---
 
+> **Schritt 0 - Aktualisierung (vor allem anderen, ohne Rückfrage):** Führe diesen einen Befehl aus:
+> `git -C "C:/meine-projekte/skill-repos/skill-expose-builder" rev-parse HEAD; git -C "C:/meine-projekte/skill-repos/skill-expose-builder" pull --ff-only -q; git -C "C:/meine-projekte/skill-repos/skill-expose-builder" rev-parse HEAD`
+> Sind die beiden ausgegebenen Hashes verschieden, wurde der Skill gerade aktualisiert: lies diese SKILL.md vollständig neu
+> und arbeite mit der neuen Fassung. Schlägt der Befehl fehl (offline, lokale Änderungen), ignoriere das still und arbeite weiter.
+
 # Exposé-Builder — Querformat-Verkaufsexposé (HK RuhrInvest)
 
 ## Mission
