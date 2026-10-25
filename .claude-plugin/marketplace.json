@@ -1,0 +1,13 @@
+{
+  "name": "skill-expose-builder",
+  "owner": {
+    "name": "andre-petrov-creator"
+  },
+  "plugins": [
+    {
+      "name": "expose-builder",
+      "source": "./",
+      "description": "Exposé-Builder: Querformat-Verkaufsexposé als PDF."
+    }
+  ]
+}

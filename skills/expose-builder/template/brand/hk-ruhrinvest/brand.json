@@ -1,0 +1,18 @@
+{
+  "id": "hk-ruhrinvest",
+  "name": "HK RuhrInvest GmbH",
+  "logo": {
+    "ink": "logo-ink.png",
+    "white": "logo-white.png"
+  },
+  "accent": "#7C1D2A",
+  "contact": {
+    "person": "Leo Kadziela",
+    "email": "immo@hk-immogroup.de",
+    "address": "Massener Str. 119a, 59423 Unna"
+  },
+  "footer": {
+    "line1": "HK RuhrInvest GmbH · Massener Str. 119a, 59423 Unna",
+    "line2": "Leo Kadziela · immo@hk-immogroup.de"
+  }
+}

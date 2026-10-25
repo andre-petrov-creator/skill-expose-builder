@@ -1,0 +1,226 @@
+/* ============================================================
+   expose.css — Querformat-Verkaufsexposé (Master, in Arbeit)
+   Calibri als einzige Schriftfamilie (v1/TB7, 21.10.2026) · Oxblood
+   Landscape A4 · lean · HK-RuhrInvest-Branding via Variablen
+   ============================================================ */
+:root{
+  --bg:#F4F1EA; --ink:#1E1A16; --muted:#6E6557; --rule:#D8D0C1;
+  --accent:#7C1D2A; --dark:#1E1A16; --dark-fg:#EDE7DA; --ph:#E9E2D4;
+  --serif:"Calibri Light",Calibri,sans-serif;
+  --body:Calibri,sans-serif;
+  --mono:Calibri,sans-serif;
+  --pad-x:16mm;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+@page{size:A4 landscape;margin:0}
+html,body{background:#888;color:var(--ink);
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+.page{position:relative;width:297mm;height:210mm;background:var(--bg);overflow:hidden;isolation:isolate}
+.page::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:150mm;height:85mm;background:url(brand/hk-ruhrinvest/logo-ink.png) center/contain no-repeat;
+  opacity:.04;z-index:-1;pointer-events:none}
+
+/* ---------- shared bits ---------- */
+.ey{font-family:var(--mono);font-size:7.5pt;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--muted)}
+/* dot drawn in CSS - Calibri has no \25CF glyph (would pull a fallback font into the PDF) */
+.ey::before{content:"";display:inline-block;width:1.6mm;height:1.6mm;border-radius:50%;
+  background:var(--accent);margin-right:2mm;vertical-align:1pt}
+
+.titlefoto{background:var(--ph);border:.5pt solid var(--rule);
+  display:flex;align-items:center;justify-content:center;text-align:center}
+.titlefoto span{font-family:var(--mono);font-size:8pt;letter-spacing:.16em;
+  text-transform:uppercase;color:#9a917f;line-height:1.7}
+
+.brandfoot{position:absolute;left:var(--pad-x);right:var(--pad-x);bottom:9mm;
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:.5pt solid var(--rule);padding-top:2.5mm;
+  font-family:var(--mono);font-size:7pt;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted)}
+.brandfoot b{color:var(--ink)}
+
+/* ---------- running head (Inhaltsseiten) ---------- */
+.runhead{position:absolute;top:14mm;left:var(--pad-x);right:var(--pad-x);
+  display:flex;justify-content:space-between;align-items:center;
+  border-bottom:.5pt solid var(--rule);padding-bottom:3mm}
+.runhead img{height:7mm;width:auto}
+.runhead__meta{font-family:var(--mono);font-size:7pt;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted)}
+
+/* ============ TITELSEITE (Variante A) ============ */
+.cover{display:grid;grid-template-columns:112mm 1fr;column-gap:13mm;padding:20mm var(--pad-x)}
+.cover__text{display:flex;flex-direction:column;justify-content:flex-start;padding-top:8mm}
+.cover__logo{width:42mm;height:auto;margin-bottom:11mm}
+.cover h1{font-family:var(--serif);font-weight:400;font-size:44pt;line-height:1;margin:0 0 6mm}
+.cover__rule{border-top:.5pt solid var(--rule);width:42mm;margin:0 0 6mm}
+.cover__addr{font-family:var(--mono);font-size:9pt;letter-spacing:.05em;color:var(--muted);line-height:1.7}
+.cover__wohn{font-family:var(--serif);font-size:26pt;line-height:1;margin-top:5mm}
+.cover__foto{height:100%}
+
+/* ============ INHALTSSEITE (generisch) ============ */
+.section{padding:30mm var(--pad-x) 15mm;display:flex;flex-direction:column}
+.section__head{margin-bottom:0}
+.section h2{font-family:var(--serif);font-weight:400;font-size:26pt;line-height:1.05;margin-top:2.5mm}
+
+/* freie Serifen-Zahlen (keine Boxen) */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);column-gap:14mm;margin-bottom:6mm}
+.stats--4{grid-template-columns:repeat(4,1fr);column-gap:10mm}
+.stat__num{font-family:var(--serif);font-size:27pt;line-height:1}
+.stat__num small{font-size:13pt;color:var(--muted)}
+.stat__label{font-family:var(--mono);font-size:7pt;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:2mm}
+
+.rule{border-top:.5pt solid var(--rule);margin:0 0 6mm}
+
+/* zwei Datenspalten */
+.datacols{display:grid;grid-template-columns:1fr 1.02fr;column-gap:12mm;align-items:stretch}
+.colhead{font-family:var(--mono);font-size:8pt;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink);border-bottom:1.2pt solid var(--accent);padding-bottom:2mm;margin-bottom:4.5mm;display:inline-block}
+.eckpanel{padding-top:1mm}
+.modpanel{background:#ECE5D6;border:.5pt solid var(--rule);padding:6mm 8mm 4mm;height:100%}
+.subhead{font-family:var(--mono);font-size:6.8pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);margin:4mm 0 1mm}
+.subhead--first{margin-top:1mm}
+.datalist__row{display:flex;justify-content:space-between;align-items:baseline;
+  padding:1.6mm 0;border-bottom:.4pt solid var(--rule)}
+.datalist__label{font-family:var(--mono);font-size:7pt;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted)}
+.datalist__val{font-family:var(--body);font-size:10.5pt;text-align:right}
+.val-ph{font-family:var(--mono);font-size:8.5pt;color:#B3A992;letter-spacing:.04em}
+
+/* Energieausweis-Zeile */
+.energy{display:flex;justify-content:space-between;align-items:center;
+  margin-top:5mm;padding-top:3mm;border-top:.5pt solid var(--rule)}
+.energy__label{font-family:var(--mono);font-size:7pt;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.energy__val{display:flex;align-items:center;font-family:var(--body);font-size:10.5pt}
+.energybadge{display:inline-flex;align-items:center;justify-content:center;min-width:6.5mm;height:6.5mm;
+  padding:0 1.5mm;background:var(--accent);color:#fff;font-family:var(--mono);font-size:8.5pt;font-weight:500;margin-left:3mm}
+
+/* Headline-Unterstrich (rot) */
+.h2rule{border-top:1.6pt solid var(--accent);width:36mm;margin-top:3mm}
+
+/* Energieausweis-Gadget mit Klassen-Farbskala */
+.energybox{padding-top:1mm}
+.energybox .etype{font-family:var(--mono);font-size:7.5pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:2.5mm}
+.energybox .eval{font-family:var(--serif);font-size:30pt;line-height:1}
+.energybox .eval small{font-size:12pt;color:var(--muted)}
+.escale{display:flex;gap:1.2mm;margin-top:6mm;align-items:center}
+.escell{flex:1;height:9mm;display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:7.5pt;color:#fff}
+.escell.is-active{outline:2pt solid var(--ink);outline-offset:-1pt;font-weight:700;height:12.5mm}
+.eb-Ap{background:#009640}
+.eb-A{background:#3FA535}
+.eb-B{background:#84BD00;color:#1E1A16}
+.eb-C{background:#C8D400;color:#1E1A16}
+.eb-D{background:#FFD500;color:#1E1A16}
+.eb-E{background:#F39200}
+.eb-F{background:#EC6608}
+.eb-G{background:#E30613}
+
+/* Eckdaten als Icon-Liste (links zuerst, dann rechts) */
+.eckflow{flex:1;display:flex;align-items:center}
+.iconcols{display:grid;grid-template-columns:1fr 1fr;column-gap:16mm;align-items:start;width:100%}
+.iconrow{display:flex;align-items:flex-start;gap:4.5mm;padding:4mm 0;border-bottom:.4pt solid var(--rule)}
+.iconrow .ic{width:6.5mm;height:6.5mm;flex:none;color:var(--accent);margin-top:.6mm}
+.iconrow .ic svg{width:100%;height:100%;display:block;fill:none;stroke:currentColor;
+  stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.iconrow .ic.eclass{color:#fff;display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:9pt;font-weight:600;border-radius:1pt;margin-top:0}
+.iconrow__txt{display:flex;flex-direction:column;gap:1.2mm;flex:1;min-width:0}
+.iconrow__label{font-family:var(--mono);font-size:7.1pt;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.iconrow__val{font-family:var(--body);font-size:12pt;line-height:1.25}
+
+/* Energieausweis in Vollbreite (Gebäude-Technik & Zustand) — Absatzlinie + Mini-Skala rechts */
+.energrow{display:flex;justify-content:space-between;align-items:center;gap:10mm;
+  margin-top:5mm;margin-bottom:2mm;padding:0 0 2.4mm;min-height:24mm;
+  border-top:.6pt solid var(--rule)}
+.energrow__txt{display:flex;flex-direction:column;gap:1.2mm}
+.energrow__scale{width:74mm;flex:none;display:flex;flex-direction:column}
+.energrow__scale .escale--mini{width:100%}
+.energrow__date{font-family:var(--mono);font-size:6.5pt;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin-top:2mm}
+.escale--mini{width:74mm;flex:none;margin-top:0;gap:.7mm}
+.escale--mini .escell{height:5.4mm;font-size:5.5pt}
+.escale--mini .escell.is-active{height:7.6mm}
+
+/* ---------- Seite 4 · Mikrolage / Standort ---------- */
+.leadline{font-family:var(--body);font-style:italic;font-size:12.5pt;line-height:1.4;
+  color:var(--ink);max-width:220mm;margin:5mm 0 0}
+.locoflow{flex:1;display:flex;align-items:center}
+.locogrid{display:grid;grid-template-columns:100mm 1fr;column-gap:12mm;align-items:center;width:100%}
+.mapph{height:108mm;background:var(--ph);border:.5pt solid var(--rule);position:relative;
+  display:flex;align-items:center;justify-content:center;text-align:center}
+.mapph span{font-family:var(--mono);font-size:7.5pt;letter-spacing:.14em;
+  text-transform:uppercase;color:#9a917f;line-height:1.7}
+.mapph__pin{position:absolute;top:50%;left:50%;width:8mm;height:8mm;transform:translate(-50%,-135%);
+  color:var(--accent);opacity:.5}
+.mapph__pin svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
+/* dichte 2-Spalten-POI-Liste (Spalte 1 füllt zuerst, dann Spalte 2) */
+.poigrid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(6,auto);
+  grid-auto-flow:column;column-gap:11mm;align-content:center;width:100%}
+.poirow{display:flex;align-items:flex-start;gap:3.4mm;padding:2.5mm 0;border-bottom:.4pt solid var(--rule)}
+.poirow .ic{width:5.6mm;height:5.6mm;flex:none;color:var(--accent);margin-top:.5mm}
+.poirow .ic svg{width:100%;height:100%;display:block;fill:none;stroke:currentColor;
+  stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.poirow__txt{display:flex;flex-direction:column;gap:.8mm;min-width:0}
+.poirow__label{font-family:var(--mono);font-size:6.5pt;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.poirow__val{font-family:var(--body);font-size:10pt;line-height:1.2}
+
+/* ---------- Seite Makrolage / Stadt ---------- */
+.macroflow{flex:1;display:flex;align-items:center}
+.macrogrid{display:grid;grid-template-columns:115mm 1fr;column-gap:13mm;align-items:center;width:100%}
+.cityimg{height:118mm;background:var(--ph);border:.5pt solid var(--rule);
+  display:flex;align-items:center;justify-content:center;text-align:center}
+.cityimg span{font-family:var(--mono);font-size:7.5pt;letter-spacing:.14em;
+  text-transform:uppercase;color:#9a917f;line-height:1.8}
+.macroright{display:flex;flex-direction:column}
+.macrotext{font-family:var(--body);font-size:11pt;line-height:1.45;color:var(--ink);margin-bottom:7mm}
+.citystats{display:grid;grid-template-columns:1fr 1fr;column-gap:10mm;row-gap:6mm;margin-bottom:7mm}
+.citystat__num{font-family:var(--serif);font-size:24pt;line-height:1}
+.citystat__label{font-family:var(--mono);font-size:6.8pt;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muted);margin-top:2mm;line-height:1.35}
+.cityfacts{display:flex;flex-direction:column;border-top:.5pt solid var(--rule);padding-top:4mm}
+.cityfact{display:flex;align-items:flex-start;gap:3.4mm;padding:1.8mm 0}
+.cityfact .ic{width:5mm;height:5mm;flex:none;color:var(--accent);margin-top:.4mm}
+.cityfact .ic svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
+.cityfact__txt{font-family:var(--body);font-size:10pt;line-height:1.25}
+.cityfact__txt b{font-family:var(--mono);font-size:6.6pt;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);font-weight:400;display:block;margin-bottom:.4mm}
+
+/* ---------- Seite Wohnungsdaten (dichte Datenliste) ---------- */
+.wohnflow{flex:1;display:flex;align-items:center}
+.wohnflow .datacols{width:100%}
+
+/* ---------- Seite Immobilienbewertung (Screenshot 1:1, unbearbeitet) ---------- */
+.bewflow{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;margin:4mm 0 2mm}
+.bewflow img{max-width:100%;max-height:100%;width:auto;height:auto;border:1pt solid var(--rule)}
+
+/* ---------- Seite Grundriss (kleiner Marker, Grundriss überdeckt ihn) ---------- */
+.grflow{flex:1;display:flex;align-items:center}
+.fotomark--gr{padding:13mm 20mm}
+
+/* ---------- Variante B: Daten links (~40 %) + Foto rechts (~60 %) ----------
+   Foto-Platzhalter bewusst winzig — das eingefügte Foto überdeckt ihn sicher. */
+.splitflow{flex:1;display:grid;grid-template-columns:100mm 1fr;column-gap:10mm;align-items:stretch}
+.splitdata{display:flex;flex-direction:column;justify-content:center}
+.splitdata .iconrow{padding:2.4mm 0;gap:3.5mm}
+.splitdata .iconrow .ic{width:5.2mm;height:5.2mm}
+.splitdata .iconrow__label{font-size:6.4pt}
+.splitdata .iconrow__val{font-size:9.5pt}
+.splitdata .datalist__row{padding:1.4mm 0}
+.splitdata .datalist__val{font-size:9.5pt}
+.splitdata .subhead{margin:3mm 0 .8mm}
+.splitdata .energrow{flex-direction:column;align-items:flex-start;gap:2.5mm;
+  min-height:0;margin-top:3.5mm;padding:3mm 0 0}
+.splitdata .energrow__scale{width:100%}
+.splitdata .escale--mini{width:100%}
+.fotozone{display:flex;align-items:center;justify-content:center}
+.fotomark{border:.6pt dashed #B3A992;padding:3.5mm 5.5mm;text-align:center}
+.fotomark span{font-family:var(--mono);font-size:6.5pt;letter-spacing:.14em;
+  text-transform:uppercase;color:#9a917f;line-height:1.7}
+
+/* Demo-Label Varianten-Anhang (nur Master-Vorschau, im echten Exposé entfernt) */
+.vartag{position:absolute;top:6mm;left:var(--pad-x);font-family:var(--mono);font-size:6.5pt;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
